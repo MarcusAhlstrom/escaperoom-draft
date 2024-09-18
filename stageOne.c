@@ -55,17 +55,9 @@ void stageOne() {
         mvprintw(input_msg_y, input_msg_x, "You entered: %s and %s", input1, input2);
         refresh();
 
-        char *error_message = "";
-
-        if (strcmp(input1, "correct_username") != 0) {
-            strcat(error_message, "Incorrect username. ");
-        }
-        if (strcmp(input2, "correct_password") != 0) {
-            strcat(error_message, "Incorrect password. ");
-        }
 
         if (strcmp(input1, "correct_username") == 0 && strcmp(input2, "correct_password") == 0) {
-            mvprintw(input_msg_y + 1, input_msg_x, error_message);
+            mvprintw(input_msg_y + 1, input_msg_x, "Incorrect inputs. Try again.");
             refresh();
             getch();
             endwin();
