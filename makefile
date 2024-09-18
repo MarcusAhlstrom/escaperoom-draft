@@ -13,8 +13,8 @@ $(PROGNAME).o: main.c
 soundPlayer.o: soundPlayer.c soundPlayer.h
 	$(CC) -c soundPlayer.c $(CFLAGS)
 
-safeFunctions.o: safeFunctions.c safeFunctions.h
-	$(CC) -c safeFunctions.c $(CFLAGS)
+safeFunctions.o: utils/safeFunctions.c utils/safeFunctions.h
+	$(CC) -c utils/safeFunctions.c $(CFLAGS)
 
 stageOne.o: stageOne.c stageOne.h
 	$(CC) -c stageOne.c $(CFLAGS)

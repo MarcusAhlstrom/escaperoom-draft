@@ -1,3 +1,6 @@
+#ifndef INCLUDE_ALL_H
+#define INCLUDE_ALL_H
+
 #include <stdio.h>
 #include <ncurses.h>
 #include <stdlib.h>
@@ -17,4 +20,6 @@
 #include "stageNine.h"
 #include "stageTen.h"
 #include "soundPlayer.h"
-#include "safeFunctions.h"
+#include "utils/safeFunctions.h"
+
+#endif // INCLUDE_ALL_H
