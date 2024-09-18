@@ -42,7 +42,7 @@ void stageOne() {
         mvwgetnstr(textbox_win1, 1, 12, input1, 29);
 
         werase(textbox_win2);
-        box(textbox_win2, 0, 0); 
+        box(textbox_win2, 0, 0);
         mvwprintw(textbox_win2, 1, 1, "Enter text 2: ");
         wrefresh(textbox_win2);
 
@@ -56,13 +56,14 @@ void stageOne() {
         refresh();
 
 
-        if (strcmp(input1, "correct_username") == 0 && strcmp(input2, "correct_password") == 0) {
-            mvprintw(input_msg_y + 1, input_msg_x, "Incorrect inputs. Try again.");
+        if (strcmp(input1, "1") == 0 && strcmp(input2, "2") == 0) {
+            mvprintw(input_msg_y + 1, input_msg_x, "Correct inputs. Don't try again");
             refresh();
             getch();
             endwin();
+            sleep(1);
             stageTwo();
-            break; 
+            break;
         } else {
             mvprintw(input_msg_y + 1, input_msg_x, "Incorrect inputs. Try again.");
             refresh();
