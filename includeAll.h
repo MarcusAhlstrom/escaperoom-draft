@@ -9,8 +9,9 @@
 #include <sys/wait.h>
 #include <string.h>
 
-#include "stageOne.h"
-#include "stageTwo.h"
+#include "loginScreen/loginScreen.h"
+#include "twoFaScreen/twoFaScreen.h"
+#include "chatScreen/chatScreen.h"
 #include "stageThree.h"
 #include "stageFour.h"
 #include "stageFive.h"

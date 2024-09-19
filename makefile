@@ -4,8 +4,8 @@ PROGNAME=escaperoom
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o stageOne.o stageTwo.o stageThree.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o
-	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o stageOne.o stageTwo.o stageThree.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o $(CFLAGS)
+$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o stageThree.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o
+	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o stageThree.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o $(CFLAGS)
 
 $(PROGNAME).o: main.c
 	$(CC) -c main.c -o $(PROGNAME).o $(CFLAGS)
@@ -16,11 +16,11 @@ soundPlayer.o: soundPlayer.c soundPlayer.h
 safeFunctions.o: utils/safeFunctions.c utils/safeFunctions.h
 	$(CC) -c utils/safeFunctions.c $(CFLAGS)
 
-stageOne.o: stageOne.c stageOne.h
-	$(CC) -c stageOne.c $(CFLAGS)
+loginScreen.o: loginScreen/loginScreen.c loginScreen/loginScreen.h
+	$(CC) -c loginScreen/loginScreen.c $(CFLAGS)
 
-stageTwo.o: stageTwo.c stageTwo.h
-	$(CC) -c stageTwo.c $(CFLAGS)
+twoFaScreen.o: twoFaScreen/twoFaScreen.c twoFaScreen/twoFaScreen.h
+	$(CC) -c twoFaScreen/twoFaScreen.c $(CFLAGS)
 
 stageThree.o: stageThree.c stageThree.h
 	$(CC) -c stageThree.c $(CFLAGS)
@@ -45,6 +45,9 @@ stageNine.o: stageNine.c stageNine.h
 
 stageTen.o: stageTen.c stageTen.h
 	$(CC) -c stageTen.c $(CFLAGS)
+
+chatScreen.o: chatScreen/chatScreen.c chatScreen/chatScreen.h
+	$(CC) -c chatScreen/chatScreen.c $(CFLAGS)
 
 clean:
 	rm -f *.o

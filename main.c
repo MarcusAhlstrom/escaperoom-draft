@@ -5,13 +5,13 @@ int main(int argc, const char *argv []){
                 int level = atoi(argv[1]);
                 switch(level){
                         case 1:
-                                stageOne();
+                                loginScreen();
                                 break;
                         case 2:
-                                stageTwo();
+                                twoFaScreen();
                                 break;
                         case 3:
-                                stageThree();
+                                chatScreen();
                                 break;
                         case 4:
                                 stageFour();
@@ -35,10 +35,10 @@ int main(int argc, const char *argv []){
                                 stageTen();
                                 break;
                         default:
-                                stageOne();
+                                loginScreen();
                 }
         }else if(argc == 1){
-                stageOne();
+                loginScreen();
         }else{
                 printf("Too many arguments");
         }
