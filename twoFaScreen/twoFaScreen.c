@@ -1,6 +1,6 @@
-#include "includeAll.h"
+#include "../includeAll.h"
 
-void stageTwo(){
+void twoFaScreen(){
   initscr();
   noecho(); // Disable echoing of typed characters
   cbreak(); // Disable line buffering

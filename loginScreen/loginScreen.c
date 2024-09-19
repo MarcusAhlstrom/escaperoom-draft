@@ -1,6 +1,6 @@
-#include "includeAll.h"
+#include "../includeAll.h"
 
-void stageOne() {
+void loginScreen() {
     initscr();
     noecho(); // Disable echoing of typed characters
     cbreak(); // Disable line buffering
@@ -10,7 +10,7 @@ void stageOne() {
     getmaxyx(stdscr, term_height, term_width);
 
     // Center the initial message
-    const char *initial_msg = "FIRST LEVEL WHHOOOOAOAAA";
+    const char *initial_msg = "Login Screen";
     int initial_msg_x = (term_width - strlen(initial_msg)) / 2;
     mvprintw(0, initial_msg_x, "%s", initial_msg);
     refresh();
@@ -18,7 +18,7 @@ void stageOne() {
     // Create a new window for the first textbox
     int height = 3;
     int width = 40;
-    int start_y = (term_height - height) / 2; // Center vertically
+    int start_y = ((term_height - height) - 7) / 2; // Center vertically
     int start_x = (term_width - width) / 2; // Center horizontally
     WINDOW *textbox_win1 = newwin(height, width, start_y, start_x);
     box(textbox_win1, 0, 0); // Draw a box around the window
@@ -29,48 +29,57 @@ void stageOne() {
     box(textbox_win2, 0, 0); // Draw a box around the window
     wrefresh(textbox_win2); // Refresh the second textbox window
 
-    char input1[30];
-    char input2[30];
+
+    
     while (1) {
+        
+        char *input1 = safeCalloc(22, sizeof(char));
+        char *input2 = safeCalloc(22, sizeof(char));
+        
         werase(textbox_win1);
         box(textbox_win1, 0, 0);
-        mvwprintw(textbox_win1, 1, 1, "Enter text 1: ");
+        mvwprintw(textbox_win1, 1, 1, "Enter Username: ");
         wrefresh(textbox_win1);
 
         echo();
 
-        mvwgetnstr(textbox_win1, 1, 12, input1, 29);
-
         werase(textbox_win2);
         box(textbox_win2, 0, 0);
-        mvwprintw(textbox_win2, 1, 1, "Enter text 2: ");
+        mvwprintw(textbox_win2, 1, 1, "Enter Password: ");
         wrefresh(textbox_win2);
 
-        mvwgetnstr(textbox_win2, 1, 12, input2, 29);
+        mvwgetnstr(textbox_win1, 1, 17, input1, 21);
 
-        noecho();
+        mvwgetnstr(textbox_win2, 1, 17, input2, 21);
+
+        echo();
 
         int input_msg_y = start_y + height * 2 + 4;
         int input_msg_x = (term_width - (12 + strlen(input1) + strlen(input2) + 5)) / 2;
-        mvprintw(input_msg_y, input_msg_x, "You entered: %s and %s", input1, input2);
-        refresh();
-
+        
 
         if (strcmp(input1, "1") == 0 && strcmp(input2, "2") == 0) {
+            
             mvprintw(input_msg_y + 1, input_msg_x, "Correct inputs. Don't try again");
             refresh();
             getch();
+            clear(); // Clear the screen
+            refresh(); // Refresh to apply the clear
             endwin();
             sleep(1);
-            stageTwo();
-            break;
+            twoFaScreen();
         } else {
+            clrtoeol();     
+            mvprintw(input_msg_y, input_msg_x, "You entered: %s and %s", input1, input2);
+            refresh();
             mvprintw(input_msg_y + 1, input_msg_x, "Incorrect inputs. Try again.");
             refresh();
             getch();
             move(input_msg_y + 1, input_msg_x);
             clrtoeol();
         }
+        free(input1);
+        free(input2);
     }
 
     endwin();
