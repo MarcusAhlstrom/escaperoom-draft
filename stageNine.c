@@ -2,4 +2,5 @@
 
 void stageNine(){
     printf("STAGE NINE\n");
+    stageTen();
 }

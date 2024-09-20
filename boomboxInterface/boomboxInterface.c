@@ -14,7 +14,8 @@ void stageThree(){
   // Read in existing settings, and handle any error
   if(tcgetattr(serial_port, &tty) != 0) {
     printf("Error %i from tcgetattr: %s\n", errno, strerror(errno));
-    exit(EXIT_FAILURE);
+    stageFour();
+    exit(0);
   }
 
   tty.c_cflag &= ~PARENB; // Clear parity bit, disabling parity (most common)
@@ -47,7 +48,7 @@ void stageThree(){
   // Save tty settings, also checking for error
   if (tcsetattr(serial_port, TCSANOW, &tty) != 0) {
     printf("Error %i from tcsetattr: %s\n", errno, strerror(errno));
-    exit(EXIT_FAILURE);
+    stageFour();
   }
 
   // Write to serial port

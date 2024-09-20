@@ -29,13 +29,16 @@ void loginScreen() {
     box(textbox_win2, 0, 0); // Draw a box around the window
     wrefresh(textbox_win2); // Refresh the second textbox window
 
+    char *correct_username = safeCalloc(6, sizeof(char));
+    char *correct_password = safeCalloc(6, sizeof(char));
+    strcpy(correct_username, "admin");
+    strcpy(correct_password, "admin");
 
-    
     while (1) {
-        
+
         char *input1 = safeCalloc(22, sizeof(char));
         char *input2 = safeCalloc(22, sizeof(char));
-        
+
         werase(textbox_win1);
         box(textbox_win1, 0, 0);
         mvwprintw(textbox_win1, 1, 1, "Enter Username: ");
@@ -56,23 +59,22 @@ void loginScreen() {
 
         int input_msg_y = start_y + height * 2 + 4;
         int input_msg_x = (term_width - (12 + strlen(input1) + strlen(input2) + 5)) / 2;
-        
-
-        if (strcmp(input1, "1") == 0 && strcmp(input2, "2") == 0) {
-            
-            mvprintw(input_msg_y + 1, input_msg_x, "Correct inputs. Don't try again");
+        if (strcmp(input1, correct_username) == 0 && strcmp(input2, correct_password) == 0) {
+            mvprintw(input_msg_y + 1, input_msg_x, "Welcome %s, Press any key to continue", correct_username);
             refresh();
             getch();
             clear(); // Clear the screen
             refresh(); // Refresh to apply the clear
             endwin();
-            sleep(1);
+            free(input1);
+            free(input2);
             twoFaScreen();
+            break;
         } else {
-            clrtoeol();     
+            clrtoeol();
             mvprintw(input_msg_y, input_msg_x, "You entered: %s and %s", input1, input2);
             refresh();
-            mvprintw(input_msg_y + 1, input_msg_x, "Incorrect inputs. Try again.");
+            mvprintw(input_msg_y + 1, input_msg_x, "Invalid username or password. Try again.");
             refresh();
             getch();
             move(input_msg_y + 1, input_msg_x);
@@ -81,6 +83,7 @@ void loginScreen() {
         free(input1);
         free(input2);
     }
-
+    free(correct_username);
+    free(correct_password);
     endwin();
 }

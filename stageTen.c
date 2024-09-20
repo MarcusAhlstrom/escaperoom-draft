@@ -1,5 +1,6 @@
 #include "includeAll.h"
 
 void stageTen(){
-    printf("STAGE TEN\n");
+    printf("GRATTIS DU VANN!!!!! :) \n");
+    exit(0);
 }
