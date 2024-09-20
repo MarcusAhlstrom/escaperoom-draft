@@ -12,7 +12,7 @@
 #include "loginScreen/loginScreen.h"
 #include "twoFaScreen/twoFaScreen.h"
 #include "chatScreen/chatScreen.h"
-#include "stageThree.h"
+#include "boomboxInterface/boomboxInterface.h"
 #include "stageFour.h"
 #include "stageFive.h"
 #include "stageSix.h"
@@ -22,5 +22,6 @@
 #include "stageTen.h"
 #include "soundPlayer.h"
 #include "utils/safeFunctions.h"
+#include "usbChecker/usbChecker.h"
 
 #endif // INCLUDE_ALL_H

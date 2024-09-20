@@ -1,10 +1,7 @@
+#include "../includeAll.h"
 #include <libudev.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
 
-#define USB_MOUNT_PATH "/media/usb"
+#define USB_MOUNT_PATH "/mnt/usb" // Just to be annoying
 
 void check_usb_sticks() {
     struct udev *udev;
@@ -36,7 +33,7 @@ void check_usb_sticks() {
 
             // Try to mount the USB device
             char mount_cmd[512];
-            snprintf(mount_cmd, sizeof(mount_cmd), "mount %s %s", devnode, mount_path);
+            snprintf(mount_cmd, sizeof(mount_cmd), "mount -m %s %s", devnode, mount_path);
             if (system(mount_cmd) == 0) {
                 char file_path[512];
                 snprintf(file_path, sizeof(file_path), "%s/1.txt", mount_path);
@@ -64,9 +61,4 @@ void check_usb_sticks() {
     } else {
         printf("All 3 USB sticks detected.\n");
     }
-}
-
-int main() {
-    check_usb_sticks();
-    return 0;
 }

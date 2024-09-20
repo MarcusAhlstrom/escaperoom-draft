@@ -42,5 +42,6 @@ int main(int argc, const char *argv []){
         }else{
                 printf("Too many arguments");
         }
+        //check_usb_sticks(); // Move this from usbChecker to here
         return 0;
 }
