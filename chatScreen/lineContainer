@@ -1,0 +1,7 @@
+class LineContainer:
+    def __init__(self, line, categories, code):
+        self.line = line
+        self.categories = categories
+        self.code = code
+        
+
