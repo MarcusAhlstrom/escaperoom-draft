@@ -103,7 +103,6 @@ int wordGrid(Save *save){
                 if (save == NULL) {
                     printf("Error creating save\n");
                 }
-                printf("AHAHAHHAHAHAHAH: %d\n", save->completedWordsearch);
                 save->completedWordsearch = (bool)true;
                 stageSix(save);
                 break;

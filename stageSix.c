@@ -33,12 +33,12 @@ void stageSix(Save *save) {
         options[0] = "1. Matte (Klar)";
     }
     if (save->completedWordsearch) {
-        options[2] = "3. Wordsearch (Klar)";
+        options[1] = "2. Wordsearch (Klar)";
     }
     int num_options = sizeof(options) / sizeof(options[0]);
 
     // Define the message
-    const char *message = "Logikkärnan: Klara 2 av 3 utmaningar för att stänga ned kärnan!";
+    const char *message = "Logikkärnan: Klara alla utmaningar för att stänga ned kärnan!";
 
     // Calculate center position for the message and options
     int message_y = (height - num_options) / 2 - 2; // Position the message above the options
