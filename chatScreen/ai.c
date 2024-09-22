@@ -98,14 +98,11 @@ char* inference(char* input, bool *poesi, bool *choklad, bool *kanndis, bool *mi
     //fprintf(stderr, "Categories found: %s\n", categories[0]);
     LineContainer* identifiedLines;
     if (categories == NULL) {
-        printf("No categories found\n");
         identifiedLines = getLinesByCategory(lines, "no_category");
     } else {
         char* newCategory = "";
         for (int i = 0; categories[i] != NULL; i++) {
-            printf("Categories found: %s\n", categories[i]);
             if (strcmp(categories[i], "hot") == 0) {
-                printf("Hot category found\n");
                 newCategory = "hot";
             }
             if (strcmp(newCategory, "hot") == 0) {
@@ -146,7 +143,6 @@ char* inference(char* input, bool *poesi, bool *choklad, bool *kanndis, bool *mi
     if (identifiedLines == NULL) {
         identifiedLines = getLinesByCategory(lines, "no_category");
     }
-    printf("Identified lines: %s\n", getRandomLine(identifiedLines)->line);
 
     return getRandomLine(identifiedLines)->line;
 }
