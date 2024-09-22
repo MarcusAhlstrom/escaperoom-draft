@@ -68,6 +68,33 @@ void stageSeven(Save *save) {
         // Get user input
         int ch = getch();
 
+          //char *check1USB = "stat /dev/disk/by-uuid/9C05-81B5 > /tmp/hello.txt 2>&1";
+        char *check1USB = "/dev/disk/by-uuid/9C05-81B5";
+        char *check2USB = "/dev/disk/by-uuid/1CA3-1328";
+        char *check3USB = "/dev/disk/by-uuid/EE43-5823";
+
+        int hello[] = {1, 1, 1};
+        
+        struct stat statedStruct;
+
+        hello[0] = lstat(check1USB, &statedStruct);
+        if(hello[0] == 0) {
+            save->usb1 = true;
+            options[0] = "1. Nyckel 1: Inkopplad";
+        }
+
+        hello[1] = lstat(check2USB, &statedStruct);
+        if(hello[1] == 0){
+            save->usb2 = true;
+            options[0] = "1. Nyckel 1: Inkopplad";
+        }
+
+        hello[2] = lstat(check3USB, &statedStruct);
+        if(hello[2] == 0) {
+            save->usb3 = true;
+            options[0] = "1. Nyckel 1: Inkopplad";
+        }
+        
         // Handle user input
         switch (ch) {
             case KEY_UP:
@@ -80,13 +107,10 @@ void stageSeven(Save *save) {
                 // Handle the selection (e.g., print the selected option)
                 switch (current_selection) {
                     case 0:
-                        stageFive(save);
                         break;
                     case 1:
-                        stageSix(save);
                         break;
                     case 2:
-                        stageSeven(save);
                         break;
                 }
                 refresh();

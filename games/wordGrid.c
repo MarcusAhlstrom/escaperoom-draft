@@ -72,7 +72,6 @@ int wordGrid(Save *save){
 
     char correct_code[12];
     extract_correct_code(grid, correct_code);
-    printf("Correct code: %s\n", correct_code);
 
     int start_y = (max_y - GRID_SIZE) / 2;
     int start_x = (max_x - GRID_SIZE) / 2;

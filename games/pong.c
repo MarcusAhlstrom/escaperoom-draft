@@ -141,6 +141,8 @@ void pong(Save *save) {
 
         usleep(DELAY);
     }
-    stageFive(save);
+    clear();
+    refresh();
     endwin();
+    stageFive(save);
 }

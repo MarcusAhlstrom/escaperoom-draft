@@ -1,6 +1,7 @@
 #ifndef INCLUDE_ALL_H
 #define INCLUDE_ALL_H
 
+#include <sys/stat.h>
 #include <stdio.h>
 #include <ncurses.h>
 #include <stdlib.h>

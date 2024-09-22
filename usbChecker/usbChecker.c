@@ -9,33 +9,22 @@ void check_usb_sticks(Save *save) {
   char *check2USB = "/dev/disk/by-uuid/1CA3-1328";
   char *check3USB = "/dev/disk/by-uuid/EE43-5823";
 
-int hello[] = {1, 1, 1};
-int ch = -1;
+  int hello[] = {1, 1, 1};
 
-while(ch == -1){
-  struct stat statedStruct;
+  while(save->usb1 == false && save->usb2 == false && save->usb3 == false){ {
+    struct stat statedStruct;
 
-  hello[0] = lstat(check1USB, &statedStruct);
-  if(hello[0] == 0)
-    save->usb1 = true;
+    hello[0] = lstat(check1USB, &statedStruct);
+    if(hello[0] == 0)
+      save->usb1 = true;
 
-  hello[1] = lstat(check2USB, &statedStruct);
-  if(hello[1] == 0)
-    save->usb2 = true;
+    hello[1] = lstat(check2USB, &statedStruct);
+    if(hello[1] == 0)
+      save->usb2 = true;
 
-  hello[2] = lstat(check3USB, &statedStruct);
-  if(hello[2] == 0)
-    save->usb3 = true;
-
-
-  int ch = getch();
-  if(ch != -1)
-    printf("digit : %d\n", (int)ch);
-
-  if(ch == (int)'q')
-    break;
-
+    hello[2] = lstat(check3USB, &statedStruct);
+    if(hello[2] == 0)
+      save->usb3 = true;
+  }
 }
-
-
 }
