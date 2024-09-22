@@ -8,7 +8,9 @@ typedef struct {
     bool completedMath;
     bool completedKod;
     bool completedWordsearch;
-    bool completesSecurity;
+    int usb1;
+    int usb2;
+    int usb3;
 } Save;
 
 void saveGame(Save *save);

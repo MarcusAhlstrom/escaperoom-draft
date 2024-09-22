@@ -125,7 +125,7 @@ void pong() {
             clear();
             mvprintw(max_y / 2, (max_x - strlen("GAME OVER")) / 2, "GAME OVER");
             refresh();
-            usleep(2000000); // Wait for 2 seconds
+            sleep(2); // Wait for 2 seconds
             stageFive();
             break;
         }

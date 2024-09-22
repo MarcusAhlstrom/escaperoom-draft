@@ -4,8 +4,8 @@ PROGNAME=escaperoom
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o
-	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o $(CFLAGS)
+$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o usbChecker.o
+	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o usbChecker.o $(CFLAGS)
 
 $(PROGNAME).o: main.c
 	$(CC) -c main.c -o $(PROGNAME).o $(CFLAGS)
@@ -66,6 +66,9 @@ math.o: games/math.c games/math.h
 
 saveSystem.o: utils/saveSystem.c utils/saveSystem.h
 	$(CC) -c utils/saveSystem.c $(CFLAGS)
+
+usbChecker.o: usbChecker/usbChecker.c usbChecker/usbChecker.h
+	$(CC) -c usbChecker/usbChecker.c $(CFLAGS)
 
 clean:
 	rm -f *.o

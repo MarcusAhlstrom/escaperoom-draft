@@ -15,7 +15,7 @@ int main(int argc, const char *argv []){
                                 chatScreen(save);
                                 break;
                         case 4:
-                                stageFour(save);
+                                check_usb_sticks();
                                 break;
                         case 5:
                                 stageFive(save);

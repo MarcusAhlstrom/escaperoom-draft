@@ -44,7 +44,7 @@ void math_screen() {
     getmaxyx(stdscr, max_y, max_x);
 
     const char *question = "Vad blir 12 * 12 + 144 / 12 - 6?";
-    const int correct_answer = 138;
+    const int correct_answer = 150;
 
     // Display the question
     display_question(stdscr, 1, (max_x - strlen(question)) / 2, question);

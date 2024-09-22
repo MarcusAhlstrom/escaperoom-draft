@@ -1,64 +1,41 @@
 #include "../includeAll.h"
-#include <libudev.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
-#define USB_MOUNT_PATH "/mnt/usb" // Just to be annoying
+void check_usb_sticks(Save *save) {
 
-void check_usb_sticks() {
-    struct udev *udev;
-    struct udev_enumerate *enumerate;
-    struct udev_list_entry *devices, *dev_list_entry;
-    struct udev_device *dev;
+  //char *check1USB = "stat /dev/disk/by-uuid/9C05-81B5 > /tmp/hello.txt 2>&1";
+  char *check1USB = "/dev/disk/by-uuid/9C05-81B5";
+  char *check2USB = "/dev/disk/by-uuid/1CA3-1328";
+  char *check3USB = "/dev/disk/by-uuid/EE43-5823";
 
-    udev = udev_new();
-    if (!udev) {
-        fprintf(stderr, "Cannot create udev context.\n");
-        exit(1);
-    }
+int hello[] = {1, 1, 1};
+int ch = -1;
 
-    enumerate = udev_enumerate_new(udev);
-    udev_enumerate_add_match_subsystem(enumerate, "block");
-    udev_enumerate_scan_devices(enumerate);
-    devices = udev_enumerate_get_list_entry(enumerate);
+while(ch == -1){
+  struct stat statedStruct;
 
-    int usb_count = 0;
+  hello[0] = lstat(check1USB, &statedStruct);
+  if(hello[0] == 0)
+    save->usb1 = true;
 
-    udev_list_entry_foreach(dev_list_entry, devices) {
-        const char *path = udev_list_entry_get_name(dev_list_entry);
-        dev = udev_device_new_from_syspath(udev, path);
+  hello[1] = lstat(check2USB, &statedStruct);
+  if(hello[1] == 0)
+    save->usb2 = true;
 
-        if (udev_device_get_devtype(dev) && strcmp(udev_device_get_devtype(dev), "partition") == 0) {
-            const char *devnode = udev_device_get_devnode(dev);
-            char mount_path[256];
-            snprintf(mount_path, sizeof(mount_path), "%s%d", USB_MOUNT_PATH, usb_count + 1);
+  hello[2] = lstat(check3USB, &statedStruct);
+  if(hello[2] == 0)
+    save->usb3 = true;
 
-            // Try to mount the USB device
-            char mount_cmd[512];
-            snprintf(mount_cmd, sizeof(mount_cmd), "mount -m %s %s", devnode, mount_path);
-            if (system(mount_cmd) == 0) {
-                char file_path[512];
-                snprintf(file_path, sizeof(file_path), "%s/1.txt", mount_path);
 
-                if (access(file_path, F_OK) == 0) {
-                    printf("USB stick %d with 1.txt detected at %s\n", usb_count + 1, mount_path);
-                    usb_count++;
-                }
+  int ch = getch();
+  if(ch != -1)
+    printf("digit : %d\n", (int)ch);
 
-                // Unmount the USB device
-                char umount_cmd[512];
-                snprintf(umount_cmd, sizeof(umount_cmd), "umount %s", mount_path);
-                system(umount_cmd);
-            }
-        }
+  if(ch == (int)'q')
+    break;
 
-        udev_device_unref(dev);
-    }
+}
 
-    udev_enumerate_unref(enumerate);
-    udev_unref(udev);
 
-    if (usb_count < 3) {
-        printf("Not all USB sticks detected. Only %d found.\n", usb_count);
-    } else {
-        printf("All 3 USB sticks detected.\n");
-    }
 }
