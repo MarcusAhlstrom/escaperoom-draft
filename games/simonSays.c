@@ -2,7 +2,13 @@
 #include <ncurses.h>
 #include <string.h>
 
-void simonSays() {
+void simonSays(Save *save) {
+
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        exit(1);
+    }
+
     // Initialize ncurses
     initscr();
     cbreak();
@@ -70,13 +76,13 @@ void simonSays() {
                 // Handle the selection (e.g., print the selected option)
                 switch (current_selection) {
                     case 0:
-                        pong();
+                        pong(save);
                         break;
                     case 1:
-                        stageSix();
+                        stageSix(save);
                         break;
                     case 2:
-                        stageEight();
+                        stageEight(save);
                         break;
                 }
                 refresh();
