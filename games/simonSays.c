@@ -186,7 +186,7 @@ void simon2(Save *save) {
     refresh();
 
     // Wait for user input to continue
-    simonStage1();
+    simonStage2();
     save->completedSimonSays2 = (bool)true;
     simonSays(save);
 
