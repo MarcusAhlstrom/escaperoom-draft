@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "string.h": "c",
-        "triggerwordcontainer.h": "c"
+        "triggerwordcontainer.h": "c",
+        "stdlib.h": "c"
     }
 }

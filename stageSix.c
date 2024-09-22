@@ -2,7 +2,12 @@
 #include <ncurses.h>
 #include <string.h>
 
-void stageSix() {
+void stageSix(Save *save) {
+
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        exit(1);
+    }
     // Initialize ncurses
     initscr();
     cbreak();
@@ -20,6 +25,16 @@ void stageSix() {
         "2. Kodknäckning",
         "3. Wordsearch"
     };
+
+    if (save->completedMath) {
+        options[0] = "1. Matte (Klar)";
+    }
+    if (save->completedKod) {
+        options[1] = "2. Kodknäckning (Klar)";
+    }
+    if (save->completedWordsearch) {
+        options[2] = "3. Wordsearch (Klar)";
+    }
     int num_options = sizeof(options) / sizeof(options[0]);
 
     // Define the message
@@ -70,13 +85,13 @@ void stageSix() {
                 // Handle the selection (e.g., print the selected option)
                 switch (current_selection) {
                     case 0:
-                        math_screen();
+                        math_screen(save);
                         break;
                     case 1:
-                        stageSix();
+                        stageSix(save);
                         break;
                     case 2:
-                        stageEight();
+                        wordGrid(save);
                         break;
                 }
                 refresh();
@@ -85,7 +100,7 @@ void stageSix() {
                 return;
             case KEY_BACKSPACE: 
                 endwin();
-                stageFour();
+                stageFour(save);
                 return;
         }
     }

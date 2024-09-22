@@ -4,18 +4,18 @@
 
 void stageThree(){
   // Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
-  //int serial_port;
+  int serial_port;
 
   // Create new termios struct, we call it 'tty' for convention
-  //struct termios tty;
+  struct termios tty;
 
-  /*// Read in existing settings, and handle any error
+  // Read in existing settings, and handle any error
   while(tcgetattr(serial_port, &tty) != 0) {
     serial_port = open("/dev/ttyUSB0", O_RDWR);
-    printf("\n", errno, strerror(errno));
-  }*/
+    //printf("\n", errno, strerror(errno));
+  }
 
-  //serial_port = open("/dev/ttyUSB0", O_RDWR);
+  serial_port = open("/dev/ttyUSB0", O_RDWR);
   
   //ensureUARTConnection(&serial_port, &tty);
 

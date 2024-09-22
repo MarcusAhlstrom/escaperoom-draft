@@ -1,13 +1,8 @@
-#include "includeAll.h"
+#include "../includeAll.h"
 #include <ncurses.h>
 #include <string.h>
 
-void stageFour(Save *save) {
-
-    if (save == NULL) {
-        printf("Error: Save is NULL\n");
-        exit(1);
-    }
+void simonSays() {
     // Initialize ncurses
     initscr();
     cbreak();
@@ -21,14 +16,14 @@ void stageFour(Save *save) {
 
     // Define the options
     const char *options[] = {
-        "1. Prestandakärnan",
-        "2. Logikkärnan",
-        "3. Säkerhetskärnan"
+        "1. Nivå 1",
+        "2. Nivå 2",
+        "3. Nivå 3"
     };
     int num_options = sizeof(options) / sizeof(options[0]);
 
     // Define the message
-    const char *message = "Stäng ned alla systemkärnor för att avvärja attacken!";
+    const char *message = "Prestandakärnan: Klara alla utmaningar för att stänga ned kärnan!";
 
     // Calculate center position for the message and options
     int message_y = (height - num_options) / 2 - 2; // Position the message above the options
@@ -73,21 +68,24 @@ void stageFour(Save *save) {
                 break;
             case '\n': // Enter key
                 // Handle the selection (e.g., print the selected option)
-                mvprintw(height - 1, 0, "You selected: %s", options[current_selection]);
                 switch (current_selection) {
                     case 0:
-                        stageFive(save);
+                        pong();
                         break;
                     case 1:
-                        stageSix(save);
+                        stageSix();
                         break;
                     case 2:
-                        stageSeven(save);
+                        stageEight();
                         break;
                 }
                 refresh();
                 getch();
                 endwin();
+                return;
+            case KEY_BACKSPACE: 
+                endwin();
+                stageFour();
                 return;
         }
     }

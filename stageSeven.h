@@ -1,6 +1,6 @@
 #ifndef STAGE_SEVEN
 #define STAGE_SEVEN
 
-void stageSeven();
+void stageSeven(Save* save);    
 
 #endif

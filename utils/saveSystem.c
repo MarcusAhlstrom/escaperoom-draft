@@ -31,7 +31,9 @@ Save* createNewSave() {
     Save *save = safeCalloc(1, sizeof(Save));
     save->completedPong = false;
     save->completedLabyrinth = false;
-    save->completedSimonSays = false;
+    save->completedSimonSays1 = false;
+    save->completedSimonSays2 = false;
+    save->completedSimonSays3 = false;
     save->completedMath = false;
     save->completedKod = false;
     save->completedWordsearch = false;
@@ -40,7 +42,7 @@ Save* createNewSave() {
 }
 
 bool AllCompleted(Save *save) {
-    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays && save->completedMath && save->completedKod && save->completedWordsearch && save->completesSecurity) {
+    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays1 && save->completedSimonSays2 && save->completedSimonSays3 && save->completedMath && save->completedKod && save->completedWordsearch && save->completesSecurity) {
         return true;
     } else {
         return false;

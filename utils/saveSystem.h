@@ -4,7 +4,9 @@
 typedef struct {
     bool completedPong;
     bool completedLabyrinth;
-    bool completedSimonSays;
+    bool completedSimonSays1;
+    bool completedSimonSays2;
+    bool completedSimonSays3;
     bool completedMath;
     bool completedKod;
     bool completedWordsearch;

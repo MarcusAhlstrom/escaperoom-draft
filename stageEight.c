@@ -1,6 +1,10 @@
 #include "includeAll.h"
 
-void stageEight(){
+void stageEight(Save *save) {
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        return;
+    }
     while (1) {
         char userInput[100];
         printf("Enter user input: ");
