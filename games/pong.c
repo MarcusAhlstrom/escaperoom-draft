@@ -129,7 +129,7 @@ void pong(Save *save) {
             break;
         }
 
-        if (score >= 2) {
+        if (score >= 4) {
             // Challenge completed
             clear();
             mvprintw(max_y / 2, (max_x - strlen("CHALLENGE COMPLETED")) / 2, "CHALLENGE COMPLETED");
