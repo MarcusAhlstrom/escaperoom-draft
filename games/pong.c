@@ -126,17 +126,16 @@ void pong(Save *save) {
             mvprintw(max_y / 2, (max_x - strlen("GAME OVER")) / 2, "GAME OVER");
             refresh();
             sleep(2); // Wait for 2 seconds
-            stageFive(save);
             break;
         }
 
-        if (score >= 5) {
+        if (score >= 2) {
             // Challenge completed
             clear();
             mvprintw(max_y / 2, (max_x - strlen("CHALLENGE COMPLETED")) / 2, "CHALLENGE COMPLETED");
             refresh();
             usleep(2000000); // Wait for 2 seconds
-            stageFive(save);
+            save->completedPong = (bool)true;
             break;
         }
 

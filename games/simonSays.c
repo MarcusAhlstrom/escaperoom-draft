@@ -2,6 +2,12 @@
 #include <ncurses.h>
 #include <string.h>
 
+void simon1(Save *save);
+
+void simon2(Save *save);
+
+void simon3(Save *save);
+
 void simonSays(Save *save) {
 
     if (save == NULL) {
@@ -26,6 +32,16 @@ void simonSays(Save *save) {
         "2. Nivå 2",
         "3. Nivå 3"
     };
+
+    if (save->completedSimonSays1) {
+        options[0] = "1. Nivå 1 (Klar)";
+    }
+    if (save->completedSimonSays2) {
+        options[1] = "2. Nivå 2 (Klar)";
+    }
+    if (save->completedSimonSays3) {
+        options[2] = "3. Nivå 3 (Klar)";
+    }
     int num_options = sizeof(options) / sizeof(options[0]);
 
     // Define the message
@@ -43,6 +59,7 @@ void simonSays(Save *save) {
     while (1) {
         // Clear the screen
         clear();
+        
 
         // Display the message in the center above the options
         mvprintw(message_y, message_x, "%s", message);
@@ -76,13 +93,13 @@ void simonSays(Save *save) {
                 // Handle the selection (e.g., print the selected option)
                 switch (current_selection) {
                     case 0:
-                        pong(save);
+                        simon1(save);
                         break;
                     case 1:
-                        stageSix(save);
+                        simon2(save);
                         break;
                     case 2:
-                        stageEight(save);
+                        simon3(save);
                         break;
                 }
                 refresh();
@@ -94,7 +111,123 @@ void simonSays(Save *save) {
                 stageFour(save);
                 return;
         }
+        // End ncurses mode
+        endwin();
     }
+}
+
+
+
+void simon1(Save *save) {
+    // Clear the screen
+    clear();
+    // Refresh the screen to show changes
+    refresh();
+    // Initialize ncurses
+    initscr();
+    cbreak();
+    noecho();
+    curs_set(0);
+
+    // Get screen dimensions
+    int height, width;
+    getmaxyx(stdscr, height, width);
+
+    // Define the message
+    const char *message = "Klara av simon nivå 1!";
+
+    // Calculate center position for the message
+    int message_y = height / 2;
+    int message_x = (width - strlen(message)) / 2;
+
+    // Display the message in the center
+    mvprintw(message_y, message_x, "%s", message);
+
+    // Refresh the screen to show changes
+    refresh();
+
+    // Wait for user input to continue
+    simonStage1();
+    save->completedSimonSays1 = (bool)true;
+    simonSays(save);
+
+
+    // End ncurses mode
+    endwin();
+}
+
+void simon2(Save *save) {
+
+    // Clear the screen
+    clear();
+    // Refresh the screen to show changes
+    refresh();
+    // Initialize ncurses
+    initscr();
+    cbreak();
+    noecho();
+    curs_set(0);
+
+    // Get screen dimensions
+    int height, width;
+    getmaxyx(stdscr, height, width);
+
+    // Define the message
+    const char *message = "Klara av simon nivå 2!";
+
+    // Calculate center position for the message
+    int message_y = height / 2;
+    int message_x = (width - strlen(message)) / 2;
+
+    // Display the message in the center
+    mvprintw(message_y, message_x, "%s", message);
+
+    // Refresh the screen to show changes
+    refresh();
+
+    // Wait for user input to continue
+    simonStage1();
+    save->completedSimonSays2 = (bool)true;
+    simonSays(save);
+
+
+    // End ncurses mode
+    endwin();
+}
+
+void simon3(Save *save) {
+
+    // Clear the screen
+    clear();
+    // Refresh the screen to show changes
+    refresh();
+    // Initialize ncurses
+    initscr();
+    cbreak();
+    noecho();
+    curs_set(0);
+
+    // Get screen dimensions
+    int height, width;
+    getmaxyx(stdscr, height, width);
+
+    // Define the message
+    const char *message = "Klara av simon nivå 3!";
+
+    // Calculate center position for the message
+    int message_y = height / 2;
+    int message_x = (width - strlen(message)) / 2;
+
+    // Display the message in the center
+    mvprintw(message_y, message_x, "%s", message);
+
+    // Refresh the screen to show changes
+    refresh();
+
+    // Wait for user input to continue
+    simonStage3();
+    save->completedSimonSays3 = (bool)true;
+    simonSays(save);
 
     // End ncurses mode
     endwin();

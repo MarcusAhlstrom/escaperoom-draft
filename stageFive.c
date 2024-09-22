@@ -3,6 +3,10 @@
 #include <string.h>
 
 void stageFive(Save* save) {
+    // Clear the screen
+    clear();
+    // Refresh the screen to show changes
+    refresh();
 
     if (save == NULL) {
         printf("Error: Save is NULL\n");
@@ -27,20 +31,15 @@ void stageFive(Save* save) {
     // Define the options
     const char *options[] = {
         "1. Pong",
-        "2. Labyrint",
-        "3. Simon says"
+        "2. Simon says"
     };
 
     if (save->completedPong) {
         options[0] = "1. Pong (Klar)";
     }
-    if (save->completedLabyrinth) {
-        options[1] = "2. Labyrint (Klar)";
+    if (save->completedSimonSays3 && save->completedSimonSays2 && save->completedSimonSays1) {
+        options[1] = "2. Simon says (Klar)";
     }
-    if (save->completedSimonSays3) {
-        options[2] = "3. Simon says (Klar)";
-    }
-
 
     int num_options = sizeof(options) / sizeof(options[0]);
 
@@ -95,9 +94,6 @@ void stageFive(Save* save) {
                         pong(save);
                         break;
                     case 1:
-                        stageSix(save);
-                        break;
-                    case 2:
                         simonSays(save);
                         break;
                 }
