@@ -3,6 +3,16 @@
 #include <string.h>
 
 void stageSeven(Save *save) {
+
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        exit(1);
+    }
+
+    if (allCompleted(save)) {
+        stageTen(save);
+    }
+
     // Initialize ncurses
     initscr();
     cbreak();

@@ -19,7 +19,7 @@ int main(int argc, const char *argv []){
                                 twoFaScreen(save);
                                 break;
                         case 3:
-                                isOpen(save);
+                                audioCheckScreen(save);
                                 break;
                         case 4:
                                 chatScreen(save);

@@ -91,7 +91,7 @@ int move_ball(Ball *ball, Paddle *paddle, int max_x, int max_y, int *score) {
     return 0; // Game continues
 }
 
-void pong() {
+void pong(Save *save) {
     initscr();
     noecho();
     curs_set(FALSE);
@@ -126,7 +126,7 @@ void pong() {
             mvprintw(max_y / 2, (max_x - strlen("GAME OVER")) / 2, "GAME OVER");
             refresh();
             sleep(2); // Wait for 2 seconds
-            stageFive();
+            stageFive(save);
             break;
         }
 
@@ -136,12 +136,12 @@ void pong() {
             mvprintw(max_y / 2, (max_x - strlen("CHALLENGE COMPLETED")) / 2, "CHALLENGE COMPLETED");
             refresh();
             usleep(2000000); // Wait for 2 seconds
-            stageFive();
+            stageFive(save);
             break;
         }
 
         usleep(DELAY);
     }
-    stageFive();
+    stageFive(save);
     endwin();
 }

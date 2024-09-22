@@ -18,7 +18,7 @@ typedef struct {
 void saveGame(Save *save);
 void loadGame(Save *save);
 Save* createNewSave();
-bool AllCompleted(Save *save);
+bool allCompleted(Save *save);
 void pong();
 
 #endif

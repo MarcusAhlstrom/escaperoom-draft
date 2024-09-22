@@ -8,6 +8,10 @@ void stageFour(Save *save) {
         printf("Error: Save is NULL\n");
         exit(1);
     }
+
+    if (allCompleted(save)) {
+        stageTen(save);
+    }
     // Initialize ncurses
     initscr();
     cbreak();
@@ -25,6 +29,16 @@ void stageFour(Save *save) {
         "2. Logikkärnan",
         "3. Säkerhetskärnan"
     };
+
+    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays3) {
+        options[0] = "1. Prestandakärnan (Klar)";
+    }
+    if (save->completedMath && save->completedKod && save->completedWordsearch) {
+        options[1] = "2. Logikkärnan (Klar)";
+    }
+    if (save->usb1 && save->usb2 && save->usb3) {
+        options[2] = "3. Säkerhetskärnan (Klar)";
+    }
     int num_options = sizeof(options) / sizeof(options[0]);
 
     // Define the message

@@ -1,6 +1,10 @@
 #include "../includeAll.h"
 
 void loginScreen(Save *save) {
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        exit(1);
+    }
     initscr();
     noecho(); // Disable echoing of typed characters
     cbreak(); // Disable line buffering

@@ -3,6 +3,16 @@
 #include <string.h>
 
 void stageFive(Save* save) {
+
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        exit(1);
+    }
+
+    if (allCompleted(save)) {
+        stageTen(save);
+    }
+
     // Initialize ncurses
     initscr();
     cbreak();
@@ -20,6 +30,18 @@ void stageFive(Save* save) {
         "2. Labyrint",
         "3. Simon says"
     };
+
+    if (save->completedPong) {
+        options[0] = "1. Pong (Klar)";
+    }
+    if (save->completedLabyrinth) {
+        options[1] = "2. Labyrint (Klar)";
+    }
+    if (save->completedSimonSays3) {
+        options[2] = "3. Simon says (Klar)";
+    }
+
+
     int num_options = sizeof(options) / sizeof(options[0]);
 
     // Define the message

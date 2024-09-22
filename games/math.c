@@ -1,3 +1,4 @@
+#include "../includeAll.h"
 #include <ncurses.h>
 #include <string.h>
 #include <stdlib.h>
@@ -24,7 +25,17 @@ void display_feedback(WINDOW *win, int y, int x, const char *feedback, bool corr
     wrefresh(win); // Refresh the window to display the feedback
 }
 
-void math_screen() {
+void math_screen(Save *save) {
+
+    if (save == NULL) {
+        printf("Error: Save is NULL\n");
+        exit(1);
+    }
+
+    if (allCompleted(save)) {
+        stageTen(save);
+    }
+    
     initscr();
     cbreak();
     noecho();
@@ -77,6 +88,8 @@ void math_screen() {
             if (user_answer == correct_answer) {
                 correct = true;
                 display_feedback(stdscr, feedback_y, feedback_x, "Challenge Completed", correct);
+                save->completedMath = true;
+                stageSix(save);
                 break;
             } else {
                 correct = false;

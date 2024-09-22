@@ -1,6 +1,6 @@
 #ifndef PONG
 #define PONG
 
-void pong();
+void pong(Save *save);
 
 #endif

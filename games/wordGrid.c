@@ -51,6 +51,10 @@ int wordGrid(Save *save){
         printf("Error: Save is NULL\n");
         exit(1);
     }
+
+    if (allCompleted(save) == true){
+        return 0;
+    }
     initscr();
     noecho();
     curs_set(TRUE);
