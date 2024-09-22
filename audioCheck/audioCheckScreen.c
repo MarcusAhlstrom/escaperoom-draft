@@ -4,6 +4,8 @@
 
 void audioCheckScreen() {
     // Initialize the NCURSES library
+    refresh();
+
     initscr();
     noecho();
     cbreak();
@@ -24,7 +26,7 @@ void audioCheckScreen() {
     refresh();
 
     // Wait for user input to exit
-    getch();
+    REALLYensureUARTConnected();
 
     // Clean up and close the NCURSES library
     endwin();

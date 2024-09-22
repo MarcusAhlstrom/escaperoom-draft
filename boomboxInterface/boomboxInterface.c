@@ -2,20 +2,20 @@
 
 #include <sys/time.h>
 
-void stageThree(){
+void stageThree(Save *save){
   // Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
-  int serial_port;
+  //int serial_port;
 
   // Create new termios struct, we call it 'tty' for convention
-  struct termios tty;
+  //struct termios tty;
 
-  // Read in existing settings, and handle any error
+  /*// Read in existing settings, and handle any error
   while(tcgetattr(serial_port, &tty) != 0) {
     serial_port = open("/dev/ttyUSB0", O_RDWR);
-    //printf("\n", errno, strerror(errno));
-  }
+    printf("\n", errno, strerror(errno));
+  }*/
 
-  serial_port = open("/dev/ttyUSB0", O_RDWR);
+  //serial_port = open("/dev/ttyUSB0", O_RDWR);
   
   //ensureUARTConnection(&serial_port, &tty);
 
@@ -28,10 +28,10 @@ void stageThree(){
   //unsigned char msg[] = { 'H', 'e', 'l', 'l', 'o', '\0' };
   //const char hellogg[] = ":/simon3.wav\n";
   //unsigned char hellogg[] = { ':', '/', 's', 'i', 'm', 'o', 'n', '1', '.', 'w', 'a', 'v', '\n', '\0' };
-  int writes = 0;
-  long long lastTime = timeInMilliseconds();
+  //int writes = 0;
+  //long long lastTime = timeInMilliseconds();
   
-  while (writes < 3) {
+  /*while (writes < 10) {
     //ensureUARTConnection(&serial_port, &tty);
     if ((timeInMilliseconds()-lastTime) > 5000) {
       printf("Write\n");
@@ -41,7 +41,10 @@ void stageThree(){
       lastTime = timeInMilliseconds();
     }
     
-  }
+  }*/
+  
+  
+  /*
   usleep(1000000);
   playBoomboxSound(":/doom.wav\n");
   fprintf(stderr, "read\n");
@@ -60,7 +63,8 @@ void stageThree(){
   usleep(1000000);
   playBoomboxSound(":/doommm.wav\n");
   usleep(100000000);
-  printf("WHATT\n");
+  printf("WHATT\n");*/
+  
   /*
   for(int i = 0; i < 10; i++){
     usleep(1100000);
@@ -91,12 +95,13 @@ void stageThree(){
     printf("Read %i bytes. Received message: %s", num_bytes, read_buf);
   }
   close(serial_port);*/
-  stageFour();
+  simonStage1();
+  stageFour(save);
 }
 
 void ensureUARTConnection(int *serial_port, struct termios *tty) {
   if (tcgetattr(*serial_port, tty) != 0) {
-    printf("Speaker USB connection severed. Please give me my voice back.\n");
+    //printf("Speaker USB connection severed. Please give me my voice back.\n");
     // Keep trying to open USB until it works.
     while(tcgetattr(*serial_port, tty) != 0) {
       close(*serial_port);
@@ -176,17 +181,79 @@ int readBoombox(char *out) {
 
     // n is the number of bytes read. n may be 0 if no bytes were received, and can also be -1 to signal an error.
     if (num_bytes < 0) {
-      printf("Error reading: %s", strerror(errno));
+      fprintf(stderr, "Error reading: %s", strerror(errno));
       return num_bytes;
     }
 
     // Here we assume we received ASCII data, but you might be sending raw bytes (in that case, don't try and
     // print it to the screen like this!)
-    fprintf(stderr,"Read %i bytes. Received message: %s\n", num_bytes, read_buf);
+    //fprintf(stderr,"Read %i bytes. Received message: %s\n", num_bytes, read_buf);
   }
   out = strcpy(out, read_buf);
+  
   close(serial_port);
   return 0;
+}
+
+void REALLYensureUARTConnected(void) {
+  char read_buf[256] = "";
+  playBoomboxSound(".\n");
+  readBoombox(read_buf);
+  while (strcmp(read_buf, ".") != 0) {
+    //printf("Speaker USB connection severed. Please give me my voice back.\n");
+    playBoomboxSound(".\n");
+    sleep(0.5);
+    readBoombox(read_buf);
+  }
+  playBoomboxSound(",\n");
+}
+
+void simonStage1 (void) {
+  REALLYensureUARTConnected();
+  char read_buf[256];
+  playBoomboxSound("0\n");
+  sleep(1);
+  readBoombox(read_buf);
+  while (strcmp(read_buf, "w") != 0) {
+    readBoombox(read_buf);
+  }
+  usleep(100000);
+  playBoomboxSound("-\n");
+  usleep(1000000);
+  playBoomboxSound(":/whoosh.wav\n");
+  usleep(1000000);
+}
+
+void simonStage2 (void) {
+  REALLYensureUARTConnected();
+  char read_buf[256];
+  playBoomboxSound("1\n");
+  sleep(1);
+  readBoombox(read_buf);
+  while (strcmp(read_buf, "w") != 0) {
+    readBoombox(read_buf);
+  }
+  usleep(100000);
+  playBoomboxSound("-\n");
+  usleep(1000000);
+  playBoomboxSound(":/whoosh.wav\n");
+  usleep(1000000);
+}
+
+void simonStage3 (void) {
+  REALLYensureUARTConnected();
+  char read_buf[256];
+  playBoomboxSound("2\n");
+  sleep(1);
+  readBoombox(read_buf);
+  while (strcmp(read_buf, "w") != 0) {
+    readBoombox(read_buf);
+  }
+  usleep(100000);
+  playBoomboxSound("-\n");
+  usleep(1000000);
+  playBoomboxSound(":/whoosh.wav\n");
+  usleep(1000000);
 }
 
 long long timeInMilliseconds(void) {
