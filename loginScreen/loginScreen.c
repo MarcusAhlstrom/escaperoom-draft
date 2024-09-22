@@ -1,6 +1,6 @@
 #include "../includeAll.h"
 
-void loginScreen() {
+void loginScreen(Save *save) {
     initscr();
     noecho(); // Disable echoing of typed characters
     cbreak(); // Disable line buffering
@@ -68,7 +68,7 @@ void loginScreen() {
             endwin();
             free(input1);
             free(input2);
-            twoFaScreen();
+            twoFaScreen(save);
             break;
         } else {
             clrtoeol();

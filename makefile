@@ -4,8 +4,8 @@ PROGNAME=escaperoom
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o
-	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o $(CFLAGS)
+$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o
+	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o $(CFLAGS)
 
 $(PROGNAME).o: main.c
 	$(CC) -c main.c -o $(PROGNAME).o $(CFLAGS)
@@ -48,6 +48,24 @@ stageTen.o: stageTen.c stageTen.h
 
 chatScreen.o: chatScreen/chatScreen.c chatScreen/chatScreen.h
 	$(CC) -c chatScreen/chatScreen.c $(CFLAGS)
+
+ai.o: chatScreen/ai.c chatScreen/ai.h
+	$(CC) -c chatScreen/ai.c $(CFLAGS)
+
+lineContainer.o: chatScreen/lineContainer.c chatScreen/lineContainer.h
+	$(CC) -c chatScreen/lineContainer.c $(CFLAGS)
+
+triggerWordContainer.o: chatScreen/triggerWordContainer.c chatScreen/triggerWordContainer.h
+	$(CC) -c chatScreen/triggerWordContainer.c $(CFLAGS)
+
+pong.o: games/pong.c games/pong.h
+	$(CC) -c games/pong.c $(CFLAGS)
+
+math.o: games/math.c games/math.h
+	$(CC) -c games/math.c $(CFLAGS)
+
+saveSystem.o: utils/saveSystem.c utils/saveSystem.h
+	$(CC) -c utils/saveSystem.c $(CFLAGS)
 
 clean:
 	rm -f *.o

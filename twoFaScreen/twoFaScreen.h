@@ -1,6 +1,6 @@
 #ifndef STAGE_TWO
 #define STAGE_TWO
 
-void twoFaScreen();
+void twoFaScreen(Save *save);
 
 #endif

@@ -70,7 +70,7 @@ void stageFive() {
                 // Handle the selection (e.g., print the selected option)
                 switch (current_selection) {
                     case 0:
-                        stageFive();
+                        pong();
                         break;
                     case 1:
                         stageSix();

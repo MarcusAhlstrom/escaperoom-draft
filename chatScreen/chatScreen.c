@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include "../includeAll.h"
 
 #define MAX_MESSAGES 100
 #define MAX_MESSAGE_LENGTH 256
@@ -118,7 +119,7 @@ void handle_input(WINDOW *chat_win, WINDOW *input_win, int term_width) {
         wrefresh(chat_win);
 
         // Generate a random response and store it
-        const char* response = get_random_response();
+        const char* response = inference(input);
         strncpy(messages[message_count % MAX_MESSAGES], response, MAX_MESSAGE_LENGTH);
         message_count++;
 

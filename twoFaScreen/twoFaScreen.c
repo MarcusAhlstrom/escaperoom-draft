@@ -1,6 +1,6 @@
 #include "../includeAll.h"
 
-void twoFaScreen(){
+void twoFaScreen(Save *save){
   initscr();
   noecho(); // Disable echoing of typed characters
   cbreak(); // Disable line buffering
@@ -50,7 +50,7 @@ void twoFaScreen(){
           getch();
           endwin();
 
-          stageThree();
+          stageThree(save);
           break;
       } else {
           mvprintw(input_msg_y + 1, input_msg_x, "Incorrect inputs. Try again.");

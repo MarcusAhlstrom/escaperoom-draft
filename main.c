@@ -1,44 +1,45 @@
 #include "includeAll.h"
 
 int main(int argc, const char *argv []){
+        Save *save = createNewSave();
         if(argc == 2){
                 int level = atoi(argv[1]);
                 switch(level){
                         case 1:
-                                loginScreen();
+                                loginScreen(save);
                                 break;
                         case 2:
-                                twoFaScreen();
+                                twoFaScreen(save);
                                 break;
                         case 3:
-                                chatScreen();
+                                chatScreen(save);
                                 break;
                         case 4:
-                                stageFour();
+                                stageFour(save);
                                 break;
                         case 5:
-                                stageFive();
+                                stageFive(save);
                                 break;
                         case 6:
-                                stageSix();
+                                stageSix(save);
                                 break;
                         case 7:
-                                stageSeven();
+                                stageSeven(save);
                                 break;
                         case 8:
-                                stageEight();
+                                stageEight(save);
                                 break;
                         case 9:
-                                stageNine();
+                                stageNine(save);
                                 break;
                         case 10:
-                                stageTen();
+                                stageTen(save);
                                 break;
                         default:
-                                loginScreen();
+                                loginScreen(save);
                 }
         }else if(argc == 1){
-                loginScreen();
+                loginScreen(save);
         }else{
                 printf("Too many arguments");
         }

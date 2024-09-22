@@ -9,7 +9,14 @@
 #include <sys/wait.h>
 #include <string.h>
 
+#include "utils/saveSystem.h"
 #include "loginScreen/loginScreen.h"
+#include "games/pong.h"
+#include "games/math.h"
+
+#include "chatScreen/triggerWordContainer.h"
+#include "chatScreen/lineContainer.h"
+#include "chatScreen/ai.h"
 #include "twoFaScreen/twoFaScreen.h"
 #include "chatScreen/chatScreen.h"
 #include "boomboxInterface/boomboxInterface.h"
