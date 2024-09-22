@@ -34,7 +34,7 @@ int main(int argc, const char *argv []){
                                 stageSeven(save);
                                 break;
                         case 8:
-                                stageEight(save);
+                                check_usb_sticks(save);
                                 break;
                         case 10:
                                 stageTen(save);

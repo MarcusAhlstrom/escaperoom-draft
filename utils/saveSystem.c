@@ -37,12 +37,14 @@ Save* createNewSave() {
     save->completedMath = false;
     save->completedKod = false;
     save->completedWordsearch = false;
-    save->completesSecurity = false;
+    save->usb1 = false;
+    save->usb2 = false;
+    save->usb3 = false;
     return save;
 }
 
 bool AllCompleted(Save *save) {
-    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays1 && save->completedSimonSays2 && save->completedSimonSays3 && save->completedMath && save->completedKod && save->completedWordsearch && save->completesSecurity) {
+    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays && save->completedMath && save->completedKod && save->completedWordsearch && save->usb1 && save->usb2 && save->usb3) {
         return true;
     } else {
         return false;
