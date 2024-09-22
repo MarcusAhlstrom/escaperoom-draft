@@ -5,7 +5,7 @@ PROGNAME=escaperoom
 all: $(PROGNAME)
 
 $(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o simonSays.o wordGrid.o audioCheckScreen.o usbChecker.o
-	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o simonSays.o wordgrid.o audioCheckScreen.o usbChecker.o $(CFLAGS)
+	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o simonSays.o wordGrid.o audioCheckScreen.o usbChecker.o $(CFLAGS)
 
 $(PROGNAME).o: main.c
 	$(CC) -c main.c -o $(PROGNAME).o $(CFLAGS)
