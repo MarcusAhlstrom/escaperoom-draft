@@ -10,7 +10,7 @@ void stageEight(Save *save) {
         printf("Enter user input: ");
         fgets(userInput, sizeof(userInput), stdin);
         printf("User: %s", userInput);
-        char *aiGen = inference(userInput);
+        char *aiGen = "alkdjhgas,hmdasgdjhkl,";
         printf("AI: %s\n", aiGen);
     }
 

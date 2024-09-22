@@ -87,8 +87,6 @@ char* cleanInput(char* input) {
     return input;
 }
 
-char* inference();
-
 char* inference(char* input, bool *poesi, bool *choklad, bool *kanndis, bool *mira, bool *psykologi) {
 
     input = cleanInput(input);
