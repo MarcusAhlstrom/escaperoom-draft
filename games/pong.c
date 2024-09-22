@@ -143,6 +143,7 @@ void pong(Save *save) {
     }
     clear();
     refresh();
+    nodelay(stdscr, FALSE);
     endwin();
     stageFive(save);
 }
