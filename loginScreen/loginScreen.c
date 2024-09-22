@@ -35,8 +35,8 @@ void loginScreen(Save *save) {
 
     char *correct_username = safeCalloc(6, sizeof(char));
     char *correct_password = safeCalloc(6, sizeof(char));
-    strcpy(correct_username, "admin");
-    strcpy(correct_password, "admin");
+    strcpy(correct_username, "sam_sepiol");
+    strcpy(correct_password, "VERA");
 
     while (1) {
 
