@@ -2,7 +2,7 @@
 
 #include <ncurses.h>
 
-void audioCheckScreen() {
+void audioCheckScreen(Save *save) {
     // Initialize the NCURSES library
     refresh();
 
@@ -29,6 +29,8 @@ void audioCheckScreen() {
 
     // Wait for user input to exit
     REALLYensureUARTConnected();
+
+    chatScreen(save);
 
     // Clean up and close the NCURSES library
     endwin();

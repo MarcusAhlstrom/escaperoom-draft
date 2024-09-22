@@ -19,6 +19,10 @@ void stageFour(Save *save) {
     curs_set(0);
     keypad(stdscr, TRUE); // Enable special keys
 
+    // Clear and refresh the screen at the beginning
+    clear();
+    refresh();
+
     // Get screen dimensions
     int height, width;
     getmaxyx(stdscr, height, width);

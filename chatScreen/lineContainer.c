@@ -43,7 +43,8 @@ Line* getRandomLine(const LineContainer* container) {
         return NULL; // Return NULL if the container is empty
     }
     
+
     int randomIndex = rand() % container->amount; // Generate a random index within the range of the container
-    
+    playBoomboxSound(container->lines[randomIndex].code);
     return &container->lines[randomIndex]; // Return a pointer to the randomly selected line
 }

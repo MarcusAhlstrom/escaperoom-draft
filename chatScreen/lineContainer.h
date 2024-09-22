@@ -2,7 +2,7 @@
 #define LINE_CONTAINER
 
 typedef struct {
-    char code[10];
+    char code[100];
     char category[20];
     char line[100];
 } Line;

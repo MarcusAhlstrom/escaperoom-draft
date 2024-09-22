@@ -9,6 +9,7 @@ void handle_input(WINDOW *chat_win, WINDOW *input_win, int term_width);
 void draw_message_box(WINDOW *win, int y, int x, const char *message);
 const char* get_random_response();
 void chatScreen();
+void finalScreen(const char *message, Save *save);
 
 
 #endif

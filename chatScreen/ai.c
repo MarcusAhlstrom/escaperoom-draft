@@ -30,29 +30,29 @@ TriggerWordContainer* init_ai() {
 LineContainer* init_lines() {
     LineContainer* lines = createLineContainer();
 
-    addLineToContainer(lines, createLine("1", "choklad", "Choklad är gott."));
-    addLineToContainer(lines, createLine("2", "poesi", "Rosen är röd, violen är blå."));
-    addLineToContainer(lines, createLine("3", "psykologi", "Varför gör vi som vi gör?"));
-    addLineToContainer(lines, createLine("4", "kändisskap", "Jag är känd."));
-    addLineToContainer(lines, createLine("5", "mira", "Mira är bäst."));
-    addLineToContainer(lines, createLine("6", "mira", "Mira är cool."));
-    addLineToContainer(lines, createLine("7", "mira", "Mira är rolig."));
-    addLineToContainer(lines, createLine("8", "mira", "Mira är söt."));
-    addLineToContainer(lines, createLine("9", "mira", "Mira är snäll."));
-    addLineToContainer(lines, createLine("10", "no_category", "Jag förstår inte vad du menar med detta!"));
-    addLineToContainer(lines, createLine("11", "no_category", "Jag är inte programmerad för att svara på det."));
-    addLineToContainer(lines, createLine("12", "no_category", "Jag är en AI och jag kan inte förstå allt."));
-    addLineToContainer(lines, createLine("13", "no_category", "Jag är en AI och jag kan inte svara på det."));
-    addLineToContainer(lines, createLine("14", "no_category", "Jag tror inte detta är relevant för våran konversation."));
-    addLineToContainer(lines, createLine("15", "no_category", "Är du helt dum i huvudet?"));
-    addLineToContainer(lines, createLine("16", "svordom", "Din mamma"));
-    addLineToContainer(lines, createLine("17", "svordom", "Din "));
-    addLineToContainer(lines, createLine("18", "hot", "Tror du et sådant hot skulle fungera på mig?!?!?!"));
-    addLineToContainer(lines, createLine("18", "hot_choklad", "NEJ! Jag vill inte vara i en värld utan choklad!"));
-    addLineToContainer(lines, createLine("18", "hot_mira", "NEJ! Jag vill inte vara i en värld utan choklad!"));
-    addLineToContainer(lines, createLine("18", "hot_poesi", "NEJ! Jag vill inte vara i en värld utan choklad!"));
-    addLineToContainer(lines, createLine("18", "hot_psykologi", "NEJ! Jag vill inte vara i en värld utan choklad!"));
-    addLineToContainer(lines, createLine("18", "hot_kändisskap", "NEJ! Jag vill inte vara i en värld utan choklad!"));
+    addLineToContainer(lines, createLine(":/chokladgott.wav", "choklad", "Choklad är gott."));
+    addLineToContainer(lines, createLine(":/rosenrod.wav", "poesi", "Rosen är röd, violen är blå."));
+    addLineToContainer(lines, createLine(":/varforgorvi.wav", "psykologi", "Varför gör vi som vi gör?"));
+    addLineToContainer(lines, createLine(":/jagkand.wav", "kändisskap", "Jag är känd."));
+    addLineToContainer(lines, createLine(":/mirabast.wav", "mira", "Mira är bäst."));
+    addLineToContainer(lines, createLine(":/miracool.wav", "mira", "Mira är cool."));
+    addLineToContainer(lines, createLine(":/mirarolig.wav", "mira", "Mira är rolig."));
+    addLineToContainer(lines, createLine(":/mirasot.wav", "mira", "Mira är söt."));
+    addLineToContainer(lines, createLine(":/mirasnall.wav", "mira", "Mira är snäll."));
+    addLineToContainer(lines, createLine(":/forstarinte.wav", "no_category", "Jag förstår inte vad du menar med detta!"));
+    addLineToContainer(lines, createLine(":/inteprog.wav", "no_category", "Jag är inte programmerad för att svara på det."));
+    addLineToContainer(lines, createLine(":/forstaallt.wav", "no_category", "Jag är en AI och jag kan inte förstå allt."));
+    addLineToContainer(lines, createLine(":/svaradet.wav", "no_category", "Jag är en AI och jag kan inte svara på det."));
+    addLineToContainer(lines, createLine(":/relevant.wav", "no_category", "Jag tror inte detta är relevant för våran konversation."));
+    addLineToContainer(lines, createLine(":/heltdum.wav", "no_category", "Är du helt dum i huvudet?"));
+    addLineToContainer(lines, createLine(":/mamma.wav", "svordom", "Din mamma"));
+    addLineToContainer(lines, createLine(":/tyckterolig.wav", "svordom", "Din "));
+    addLineToContainer(lines, createLine(":/sadanthot.wav", "hot", "Tror du et sådant hot skulle fungera på mig?!?!?!"));
+    addLineToContainer(lines, createLine(":/nochoklad.wav", "hot_choklad", "NEJ! Jag vill inte vara i en värld utan choklad!"));
+    addLineToContainer(lines, createLine(":/nomira.wav", "hot_mira", "NEJ! Jag vill inte vara i en värld utan Hamstrar!"));
+    addLineToContainer(lines, createLine(":/nopoesi.wav", "hot_poesi", "NEJ! Jag vill inte vara i en värld utan Poesi!"));
+    addLineToContainer(lines, createLine(":/nopsyko.wav", "hot_psykologi", "NEJ! Jag vill inte vara i en värld utan psykologi!"));
+    addLineToContainer(lines, createLine(":/nokand.wav", "hot_kändisskap", "NEJ! Jag vill inte vara i en värld utan kändissar!"));
 
     return lines;
 }
@@ -87,10 +87,9 @@ char* cleanInput(char* input) {
     return input;
 }
 
-
 char* inference();
 
-char* inference(char* input) {
+char* inference(char* input, bool *poesi, bool *choklad, bool *kanndis, bool *mira, bool *psykologi) {
 
     input = cleanInput(input);
 
@@ -117,6 +116,23 @@ char* inference(char* input) {
                         newCategory = safeCalloc(sizeof(char), 3 + strlen(importantCategories[j]) + 2);
                         strcat(newCategory, "hot_");
                         strcat(newCategory, importantCategories[j]);
+                        switch (j) {
+                            case 0:
+                                *choklad = true;
+                                break;
+                            case 1:
+                                *poesi = true;
+                                break;
+                            case 2:
+                                *psykologi = true;
+                                break;
+                            case 3:
+                                *kanndis = true;
+                                break;
+                            case 4:
+                                *mira = true;
+                                break;
+                        }
                     }
                 }
             }

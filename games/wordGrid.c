@@ -46,7 +46,6 @@ void extract_correct_code(char grid[GRID_SIZE][GRID_SIZE], char *code) {
 }
 
 int wordGrid(Save *save){ 
-
     if (save == NULL) {
         printf("Error: Save is NULL\n");
         exit(1);
