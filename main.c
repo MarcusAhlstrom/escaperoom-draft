@@ -2,6 +2,7 @@
 
 int main(int argc, const char *argv []){
         Save *save = createNewSave();
+        save->completedWordsearch = true;
         if (save == NULL) {
                 if (save->completedPong == false){
                         printf("Pong is completed\n");
