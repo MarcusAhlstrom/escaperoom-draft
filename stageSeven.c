@@ -86,13 +86,13 @@ void stageSeven(Save *save) {
         hello[1] = lstat(check2USB, &statedStruct);
         if(hello[1] == 0){
             save->usb2 = true;
-            options[0] = "1. Nyckel 1: Inkopplad";
+            options[1] = "2. Nyckel 2: Inkopplad";
         }
 
         hello[2] = lstat(check3USB, &statedStruct);
         if(hello[2] == 0) {
             save->usb3 = true;
-            options[0] = "1. Nyckel 1: Inkopplad";
+            options[2] = "3. Nyckel 3: Inkopplad";
         }
         
         // Handle user input
