@@ -13,6 +13,9 @@
 #include "loginScreen/loginScreen.h"
 #include "games/pong.h"
 #include "games/math.h"
+#include "games/simonSays.h"
+#include "games/wordGrid.h"
+#include "audioCheck/audioCheckScreen.h"
 
 #include "chatScreen/triggerWordContainer.h"
 #include "chatScreen/lineContainer.h"

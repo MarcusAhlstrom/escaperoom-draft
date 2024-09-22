@@ -54,8 +54,6 @@ LineContainer* init_lines() {
     addLineToContainer(lines, createLine("18", "hot_psykologi", "NEJ! Jag vill inte vara i en värld utan choklad!"));
     addLineToContainer(lines, createLine("18", "hot_kändisskap", "NEJ! Jag vill inte vara i en värld utan choklad!"));
 
-
-
     return lines;
 }
 

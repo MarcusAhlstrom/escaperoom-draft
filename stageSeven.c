@@ -2,7 +2,7 @@
 #include <ncurses.h>
 #include <string.h>
 
-void stageSeven() {
+void stageSeven(Save *save) {
     // Initialize ncurses
     initscr();
     cbreak();
@@ -70,13 +70,13 @@ void stageSeven() {
                 // Handle the selection (e.g., print the selected option)
                 switch (current_selection) {
                     case 0:
-                        stageFive();
+                        stageFive(save);
                         break;
                     case 1:
-                        stageSix();
+                        stageSix(save);
                         break;
                     case 2:
-                        stageSeven();
+                        stageSeven(save);
                         break;
                 }
                 refresh();
@@ -85,7 +85,7 @@ void stageSeven() {
                 return;
             case KEY_BACKSPACE: 
                 endwin();
-                stageFour();
+                stageFour(save);
                 return;
         }
     }

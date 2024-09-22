@@ -2,6 +2,13 @@
 
 int main(int argc, const char *argv []){
         Save *save = createNewSave();
+        if (save == NULL) {
+                if (save->completedPong == false){
+                        printf("Pong is completed\n");
+                }
+                printf("Error creating save\n");
+                return 1;
+        }
         if(argc == 2){
                 int level = atoi(argv[1]);
                 switch(level){
@@ -12,13 +19,13 @@ int main(int argc, const char *argv []){
                                 twoFaScreen(save);
                                 break;
                         case 3:
-                                chatScreen(save);
+                                isOpen(save);
                                 break;
                         case 4:
-                                stageFour(save);
+                                chatScreen(save);
                                 break;
                         case 5:
-                                stageFive(save);
+                                stageFour(save);
                                 break;
                         case 6:
                                 stageSix(save);
@@ -27,10 +34,7 @@ int main(int argc, const char *argv []){
                                 stageSeven(save);
                                 break;
                         case 8:
-                                stageEight(save);
-                                break;
-                        case 9:
-                                stageNine(save);
+                                check_usb_sticks(save);
                                 break;
                         case 10:
                                 stageTen(save);

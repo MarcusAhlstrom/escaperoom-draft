@@ -4,11 +4,15 @@
 typedef struct {
     bool completedPong;
     bool completedLabyrinth;
-    bool completedSimonSays;
+    bool completedSimonSays1;
+    bool completedSimonSays2;
+    bool completedSimonSays3;
     bool completedMath;
     bool completedKod;
     bool completedWordsearch;
-    bool completesSecurity;
+    int usb1;
+    int usb2;
+    int usb3;
 } Save;
 
 void saveGame(Save *save);

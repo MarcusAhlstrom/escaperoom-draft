@@ -4,8 +4,8 @@ PROGNAME=escaperoom
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o
-	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageNine.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o $(CFLAGS)
+$(PROGNAME): $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o simonSays.o wordGrid.o audioCheckScreen.o usbChecker.o
+	$(CC) -o $(PROGNAME) $(PROGNAME).o soundPlayer.o safeFunctions.o loginScreen.o twoFaScreen.o boomboxInterface.o stageFour.o stageFive.o stageSix.o stageSeven.o stageEight.o stageTen.o chatScreen.o ai.o lineContainer.o triggerWordContainer.o pong.o math.o saveSystem.o simonSays.o wordgrid.o audioCheckScreen.o usbChecker.o $(CFLAGS)
 
 $(PROGNAME).o: main.c
 	$(CC) -c main.c -o $(PROGNAME).o $(CFLAGS)
@@ -40,9 +40,6 @@ stageSeven.o: stageSeven.c stageSeven.h
 stageEight.o: stageEight.c stageEight.h
 	$(CC) -c stageEight.c $(CFLAGS)
 
-stageNine.o: stageNine.c stageNine.h
-	$(CC) -c stageNine.c $(CFLAGS)
-
 stageTen.o: stageTen.c stageTen.h
 	$(CC) -c stageTen.c $(CFLAGS)
 
@@ -66,6 +63,18 @@ math.o: games/math.c games/math.h
 
 saveSystem.o: utils/saveSystem.c utils/saveSystem.h
 	$(CC) -c utils/saveSystem.c $(CFLAGS)
+
+simonSays.o: games/simonSays.c games/simonSays.h
+	$(CC) -c games/simonSays.c $(CFLAGS)
+
+wordGrid.o: games/wordGrid.c games/wordGrid.h
+	$(CC) -c games/wordGrid.c $(CFLAGS)
+
+audioCheckScreen.o: audioCheck/audioCheckScreen.c audioCheck/audioCheckScreen.h
+	$(CC) -c audioCheck/audioCheckScreen.c $(CFLAGS)
+	
+usbChecker.o: usbChecker/usbChecker.c usbChecker/usbChecker.h
+	$(CC) -c usbChecker/usbChecker.c $(CFLAGS)
 
 clean:
 	rm -f *.o

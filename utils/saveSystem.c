@@ -31,16 +31,20 @@ Save* createNewSave() {
     Save *save = safeCalloc(1, sizeof(Save));
     save->completedPong = false;
     save->completedLabyrinth = false;
-    save->completedSimonSays = false;
+    save->completedSimonSays1 = false;
+    save->completedSimonSays2 = false;
+    save->completedSimonSays3 = false;
     save->completedMath = false;
     save->completedKod = false;
     save->completedWordsearch = false;
-    save->completesSecurity = false;
+    save->usb1 = false;
+    save->usb2 = false;
+    save->usb3 = false;
     return save;
 }
 
 bool AllCompleted(Save *save) {
-    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays && save->completedMath && save->completedKod && save->completedWordsearch && save->completesSecurity) {
+    if (save->completedPong && save->completedLabyrinth && save->completedSimonSays && save->completedMath && save->completedKod && save->completedWordsearch && save->usb1 && save->usb2 && save->usb3) {
         return true;
     } else {
         return false;
