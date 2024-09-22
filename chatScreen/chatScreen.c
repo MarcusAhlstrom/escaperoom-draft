@@ -82,7 +82,7 @@ void chatScreen(Save *save) {
 
         // Display the count in the middle window
         char count_message[50];
-        snprintf(count_message, sizeof(count_message), "Positive flags count: %d", positive_count);
+        //snprintf(count_message, sizeof(count_message), "Positive flags count: %d", positive_count);
         mvwprintw(middle_win, 2, (term_width - strlen(count_message)) / 2, "%s", count_message);
         wrefresh(middle_win);
 
