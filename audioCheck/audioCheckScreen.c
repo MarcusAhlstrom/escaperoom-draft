@@ -10,6 +10,8 @@ void audioCheckScreen() {
     noecho();
     cbreak();
 
+    clear();
+
     // Get the screen dimensions
     int row, col;
     getmaxyx(stdscr, row, col);
