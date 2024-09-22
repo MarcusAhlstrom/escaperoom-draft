@@ -91,7 +91,7 @@ void simonSays(Save *save) {
                 return;
             case KEY_BACKSPACE: 
                 endwin();
-                stageFour();
+                stageFour(save);
                 return;
         }
     }
