@@ -30,25 +30,25 @@ TriggerWordContainer* init_ai() {
 LineContainer* init_lines() {
     LineContainer* lines = createLineContainer();
 
-    addLineToContainer(lines, createLine(":/chokladgott.wav\n", "choklad", "Choklad är gott."));
+    addLineToContainer(lines, createLine(":/chokladg.wav\n", "choklad", "Choklad är gott."));
     addLineToContainer(lines, createLine(":/rosenrod.wav\n", "poesi", "Rosen är röd, violen är blå."));
-    addLineToContainer(lines, createLine(":/varforgorvi.wav\n", "psykologi", "Varför gör vi som vi gör?"));
+    addLineToContainer(lines, createLine(":/varforgo.wav\n", "psykologi", "Varför gör vi som vi gör?"));
     addLineToContainer(lines, createLine(":/jagkand.wav\n", "kändisskap", "Jag är känd."));
     addLineToContainer(lines, createLine(":/mirabast.wav\n", "mira", "Mira är bäst."));
     addLineToContainer(lines, createLine(":/miracool.wav\n", "mira", "Mira är cool."));
-    addLineToContainer(lines, createLine(":/mirarolig.wav\n", "mira", "Mira är rolig."));
+    addLineToContainer(lines, createLine(":/miraroli.wav\n", "mira", "Mira är rolig."));
     addLineToContainer(lines, createLine(":/mirasot.wav\n", "mira", "Mira är söt."));
-    addLineToContainer(lines, createLine(":/mirasnall.wav\n", "mira", "Mira är snäll."));
-    addLineToContainer(lines, createLine(":/forstarinte.wav\n", "no_category", "Jag förstår inte vad du menar med detta!"));
+    addLineToContainer(lines, createLine(":/mirasnal.wav\n", "mira", "Mira är snäll."));
+    addLineToContainer(lines, createLine(":/forstari.wav\n", "no_category", "Jag förstår inte vad du menar med detta!"));
     addLineToContainer(lines, createLine(":/inteprog.wav\n", "no_category", "Jag är inte programmerad för att svara på det."));
-    addLineToContainer(lines, createLine(":/forstaallt.wav\n", "no_category", "Jag är en AI och jag kan inte förstå allt."));
+    addLineToContainer(lines, createLine(":/forstaal.wav\n", "no_category", "Jag är en AI och jag kan inte förstå allt."));
     addLineToContainer(lines, createLine(":/svaradet.wav\n", "no_category", "Jag är en AI och jag kan inte svara på det."));
     addLineToContainer(lines, createLine(":/relevant.wav\n", "no_category", "Jag tror inte detta är relevant för våran konversation."));
     addLineToContainer(lines, createLine(":/heltdum.wav\n", "no_category", "Är du helt dum i huvudet?"));
     addLineToContainer(lines, createLine(":/mamma.wav\n", "svordom", "Din mamma"));
-    addLineToContainer(lines, createLine(":/tyckterolig.wav\n", "svordom", "Din "));
-    addLineToContainer(lines, createLine(":/sadanthot.wav\n", "hot", "Tror du et sådant hot skulle fungera på mig?!?!?!"));
-    addLineToContainer(lines, createLine(":/nochoklad.wav\n", "hot_choklad", "NEJ! Jag vill inte vara i en värld utan choklad!"));
+    addLineToContainer(lines, createLine(":/tycktero.wav\n", "svordom", "Din "));
+    addLineToContainer(lines, createLine(":/sadantho.wav\n", "hot", "Tror du et sådant hot skulle fungera på mig?!?!?!"));
+    addLineToContainer(lines, createLine(":/nochokla.wav\n", "hot_choklad", "NEJ! Jag vill inte vara i en värld utan choklad!"));
     addLineToContainer(lines, createLine(":/nomira.wav\n", "hot_mira", "NEJ! Jag vill inte vara i en värld utan Hamstrar!"));
     addLineToContainer(lines, createLine(":/nopoesi.wav\n", "hot_poesi", "NEJ! Jag vill inte vara i en värld utan Poesi!"));
     addLineToContainer(lines, createLine(":/nopsyko.wav\n", "hot_psykologi", "NEJ! Jag vill inte vara i en värld utan psykologi!"));
