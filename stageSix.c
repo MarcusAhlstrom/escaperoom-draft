@@ -26,15 +26,11 @@ void stageSix(Save *save) {
     // Define the options
     const char *options[] = {
         "1. Matte",
-        "2. Kodknäckning",
-        "3. Wordsearch"
+        "2. Wordsearch"
     };
 
     if (save->completedMath) {
         options[0] = "1. Matte (Klar)";
-    }
-    if (save->completedKod) {
-        options[1] = "2. Kodknäckning (Klar)";
     }
     if (save->completedWordsearch) {
         options[2] = "3. Wordsearch (Klar)";
@@ -92,9 +88,6 @@ void stageSix(Save *save) {
                         math_screen(save);
                         break;
                     case 1:
-                        stageSix(save);
-                        break;
-                    case 2:
                         wordGrid(save);
                         break;
                 }

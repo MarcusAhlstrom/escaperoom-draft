@@ -94,6 +94,10 @@ void stageSeven(Save *save) {
             save->usb3 = true;
             options[2] = "3. Nyckel 3: Inkopplad";
         }
+
+        if (hello[0] == 0 && hello[1] == 0 && hello[2] == 0) {
+            stageSix(save);
+        }
         
         // Handle user input
         switch (ch) {
